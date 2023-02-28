@@ -1,0 +1,18 @@
+databases:
+  - name: bike_fleet_app
+    databaseName: bike_fleet_app
+    user: bike_fleet_app
+
+services:
+  - type: web
+    name: bike_fleet_app
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rake server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bike_fleet_app
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
