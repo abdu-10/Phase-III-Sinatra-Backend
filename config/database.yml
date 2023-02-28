@@ -29,9 +29,13 @@ test:
 #   database: db/production.sqlite3
 
 # for this production build:
+# hostname, username, database, password, connection string
 production:
   <<: *default
   database: bike_fleet_app
   username: bike_fleet_app
+  hostname: dpg-cfuuq753t39doauui3e0-a
   url: <%= ENV['DATABASE_URL'] %>
   password: <%= ENV['BIKE_FLEET_DATABASE_PASSWORD'] %>
+  # postgres://USER:PASSWORD@INTERNAL_HOST:PORT/DATABASE
+  # some frameworks shall allow the use of a conection string to access the database
