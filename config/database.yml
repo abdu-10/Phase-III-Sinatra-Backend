@@ -1,10 +1,15 @@
 # for this production build:
 # hostname, username, database, password, connection string
-production:
+default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  timeout: 5000
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  
+
+production:
+  <<: *default
   database: bike_fleet_app
   username: bike_fleet_app
   hostname: dpg-cfuuq753t39doauui3e0-a
