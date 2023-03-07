@@ -1,19 +1,22 @@
 # for this production build:
 # hostname, username, database, password, connection string
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development.sqlite3
   
 
 production:
-  <<: *default
-  database: bike_fleet_app
-  username: bike_fleet_app
-  hostname: dpg-cfuuq753t39doauui3e0-a
-  url: <%= ENV['DATABASE_URL'] %>
-  password: <%= ENV['BIKE_FLEET_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  database: railway
+  username: postgres
+  password: QMuIrRGG8yWgUvt42E1o
+  host: containers-us-west-52.railway.app
+  port: 6736
+  pool: 5
   # postgres://USER:PASSWORD@INTERNAL_HOST:PORT/DATABASE
   # some frameworks shall allow the use of a conection string to access the database

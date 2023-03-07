@@ -12,6 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2023_02_26_095149) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "timescaledb"
+
   create_table "bikes", force: :cascade do |t|
     t.string "model"
     t.string "reg_number"

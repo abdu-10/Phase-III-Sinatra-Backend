@@ -4,6 +4,10 @@ source "https://rubygems.org"
 # https://github.com/sinatra/sinatra
 gem "sinatra", "~> 2.1"
 
+# More Rack middleware! Used to handle CORS requests
+# https://github.com/cyu/rack-cors
+gem "rack-cors", "~> 1.1"
+
 # An object-relational mapper
 # https://guides.rubyonrails.org/active_record_basics.html
 gem "activerecord", "~> 6.1"
@@ -24,7 +28,7 @@ gem "rake"
 # https://github.com/sparklemotion/sqlite3-ruby
 # gem "sqlite3", "~> 1.4"
 # for deployment on render, we shall use postgresql
-gem 'pg'
+
 
 # Require all files in a folder
 # https://github.com/jarmo/require_all
@@ -51,4 +55,8 @@ group :test do
   gem "rspec-json_expectations", "~> 2.2"
 end
 
+group :production do
+  gem 'pg', '~> 1.4', '>= 1.4.6' # postgres adapter
+  gem 'puma', '~> 6.1', '>= 6.1.1'
+end
 
