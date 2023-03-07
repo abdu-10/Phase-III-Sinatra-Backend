@@ -28,6 +28,27 @@ class ApplicationController < Sinatra::Base
     ).to_json
     
   end
+  # private method
+  def login_error
+    @message = {error: "Invalid username or password"}
+    return @message.to_json
+  end
+
+  # login user using an email and a password
+  post '/login' do
+    password = params[:password]
+    logging_user = Owner.find_by(email: params[:email]) || Rider.find_by(email: params[:email])
+    if (logging_user)
+      if (logging_user.password == password)
+        return logging_user.to_json
+      else
+        login_error
+      end      
+    else
+      login_error    
+    end
+  end
+  
   # create an bike 
   post "/bikes" do
     Bike.create(
