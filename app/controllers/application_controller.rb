@@ -9,7 +9,8 @@ class ApplicationController < Sinatra::Base
       location: params[:location],
       avatar: params[:avatar],
       email: params[:email],
-      phone_number: params[:phone_number]
+      phone_number: params[:phone_number],      
+      password: params[:password],
     ).to_json
     
   end
@@ -24,7 +25,8 @@ class ApplicationController < Sinatra::Base
       phone_number: params[:phone_number],
       id_number: params[:id_number],
       license_number: params[:license_number],
-      spouse_contact: params[:spouse_contact],
+      spouse_contact: params[:spouse_contact],      
+      password: params[:password],
     ).to_json
     
   end
@@ -48,7 +50,7 @@ class ApplicationController < Sinatra::Base
       login_error    
     end
   end
-  
+
   # create an bike 
   post "/bikes" do
     Bike.create(
@@ -82,7 +84,7 @@ class ApplicationController < Sinatra::Base
     Bike.all.to_json    
   end
   # see all my hired bikes
-  get "/bikes/:rider_id" do
+  get "/bikies/:rider_id" do
     myBikes = Bike.where(rider_id: params[:rider_id])
     myBikes.to_json
   end

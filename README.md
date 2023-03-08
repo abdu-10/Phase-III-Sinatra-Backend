@@ -70,3 +70,5 @@ MVP
 10. Platform users are able to delete their accounts.
 
 
+FrontEnd:
+- Abdu Omar ([@GitHub](https://github.com/abdu-10/PHASE-III-REACT-FRONTEND))
